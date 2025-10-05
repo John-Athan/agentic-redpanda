@@ -1,0 +1,28 @@
+# Test configuration for Agentic Redpanda (no API keys required)
+
+message_broker:
+  bootstrap_servers:
+    - "localhost:9092"
+  security_protocol: "PLAINTEXT"
+  auto_offset_reset: "latest"
+  enable_auto_commit: true
+
+agents:
+  - agent_id: "test-agent-1"
+    agent_name: "Test Assistant"
+    role: "general"
+    llm_provider:
+      provider_type: "ollama"
+      model: "llama2"
+      base_url: "http://localhost:11434"
+      max_tokens: 1000
+      temperature: 0.7
+    topics:
+      - "general"
+      - "test"
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  handlers:
+    - console

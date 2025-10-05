@@ -1,0 +1,13 @@
+akhq:
+  connections:
+    redpanda:
+      properties:
+        bootstrap.servers: "redpanda:9092"
+  server:
+    servlet:
+      context-path: /
+  security:
+    default-group: admin
+    groups:
+      admin:
+        roles: ["topic/read", "topic/data/read", "topic/data/insert", "topic/data/delete", "topic/create", "node/read", "group/read", "group/delete"]
